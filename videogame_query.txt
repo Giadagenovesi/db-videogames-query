@@ -140,9 +140,17 @@ Query con JOIN:
 
 
 4- Selezionare i dati di tutte le software house che hanno rilasciato almeno un gioco dopo il 2020, mostrandoli una sola volta (6)
+	SELECT DISTINCT software_houses.name
+	FROM software_houses
+	INNER JOIN videogames ON videogames.software_house_id = software_houses.id
+	WHERE YEAR(videogames.release_date) > 2020
 
 
 5- Selezionare i premi ricevuti da ogni software house per i videogiochi che ha prodotto (55)
+	SELECT awards.name, videogames.name
+	FROM awards
+	INNER JOIN award_videogame ON award_videogame.award_id = awards.id
+	INNER JOIN videogames ON award_videogame.videogame_id = videogames.id
 
 
 6- Selezionare categorie e classificazioni PEGI dei videogiochi che hanno ricevuto recensioni da 4 e 5 stelle, mostrandole una sola volta (3363)
